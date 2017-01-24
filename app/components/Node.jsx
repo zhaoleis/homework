@@ -16,17 +16,8 @@ export default class Node extends Component {
 
   render() {
     const { content } = this.props
-    let _child = []
-    if (content.child && content.child.length > 0) {
-      _child = content.child.map(_item => <div key={_item.key} className="child-box">
-        <input type="checkbox" checked={_item.check} onChange={this.checkNode.bind(this, _item)} />
-        <span className="title">{_item.name}</span>
-        <span className="count">{_item.count}</span>
-      </div>)
-    }
     return (
-      <div className="node">
-        <div className="node-box">
+        <div className={content.child ? 'node-box' : 'child-box'}>
           <input type="checkbox" checked={content.check} onChange={this.checkNode.bind(this, content)} />
           <span className="title">{content.name}</span>
           <span className={content.child && content.child.length > 0 ? 'show' : 'hide'}>
@@ -34,8 +25,6 @@ export default class Node extends Component {
           </span>
           <span className={content.child ? 'count border' : 'count'}>{content.count}</span>
         </div>
-        {_child}
-      </div>
     )
   }
 }

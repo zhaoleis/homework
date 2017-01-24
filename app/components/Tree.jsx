@@ -55,14 +55,22 @@ export default class Tree extends Component {
   render() {
     const { data } = this.state
     let tree = []
-    tree = data.map(item => <Node key={item.key} content={item} changeCheck={this.changeCheck.bind(this)} />)
+    const createTree = (data) => {
+      data.forEach(item => {
+        tree.push(<Node key={item.key} content={item} changeCheck={this.changeCheck.bind(this)} />)
+        if (item.child && item.child.length > 0) {
+          createTree(item.child)
+        }
+      })
+    }
+    createTree(data)
     return (
       <div className="box">
         <div className="box-title">
           <span className="title">招聘职位</span>
           <span className="btn-clear" onClick={this.clearAll.bind(this)}>清空</span>
         </div>
-        <div>
+        <div className="node">
           {tree}
         </div>
       </div>
