@@ -45,3 +45,16 @@
   border-radius: 13px;
   margin-right: -10px;
 }
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  background: #607d8b;
+  border-radius: 3px;
+  border:1px solid #d0dedf;
+  height: 14px;
+  vertical-align: middle;
+  width: 14px;
+}
+input[type="checkbox"]:checked{
+  background:#2489c5;
+}

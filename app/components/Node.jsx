@@ -9,31 +9,30 @@ export default class Node extends Component {
     }
   }
 
-  componentWillMount() {
+  checkNode(currentItem) {
+    const { changeCheck } = this.props
+    changeCheck(currentItem)
   }
 
-  checkNode(id) {
-    console.log(id)
-  }
   render() {
-    const { title, count, child, id,check } = this.props
+    const { content } = this.props
     let _child = []
-    if (child && child.length > 0) {
-      _child = child.map(item => <div key={item.key} className="child-box">
-        <input type="checkbox" checked={item.check} onChange={this.checkNode.bind(this, item.key)}/>
-        <span className="title">{item.name}</span>
-        <span className="count">{item.count}</span>
+    if (content.child && content.child.length > 0) {
+      _child = content.child.map(_item => <div key={_item.key} className="child-box">
+        <input type="checkbox" checked={_item.check} onChange={this.checkNode.bind(this, _item)} />
+        <span className="title">{_item.name}</span>
+        <span className="count">{_item.count}</span>
       </div>)
     }
     return (
       <div className="node">
         <div className="node-box">
-          <input type="checkbox" checked={check} onChange={this.checkNode.bind(this, id)} />
-          <span className="title">{title}</span>
-          <span className={child && child.length > 0 ? 'show' : 'hide'}>
+          <input type="checkbox" checked={content.check} onChange={this.checkNode.bind(this, content)} />
+          <span className="title">{content.name}</span>
+          <span className={content.child && content.child.length > 0 ? 'show' : 'hide'}>
             <img className="node-down" src="/imgs/down.png" alt="" />
           </span>
-          <span className={child ? 'count border' : 'count'}>{count}</span>
+          <span className={content.child ? 'count border' : 'count'}>{content.count}</span>
         </div>
         {_child}
       </div>

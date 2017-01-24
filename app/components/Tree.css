@@ -11,4 +11,5 @@
 .box-title .btn-clear {
   float: right;
   vertical-align: top;
+  cursor: pointer;
 }
