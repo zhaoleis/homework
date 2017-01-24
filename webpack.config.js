@@ -23,8 +23,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, include: [path.resolve(__dirname, 'app'), path.resolve(__dirname, 'node_modules')], loader: ["style-loader", "css-loader"] },
+      { test: /\.css$/, include: [path.resolve(__dirname, 'app'), path.resolve(__dirname, 'node_modules')], loader: 'style-loader!css-loader' },
       { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loaders: ['react-hot', 'babel-loader'] },
+      { test: /\.(png|jpg)$/, loader: 'url?limit=25000' },
     ]
   },
   resolve: {

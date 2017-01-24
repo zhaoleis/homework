@@ -1,0 +1,14 @@
+.box{
+  margin: 40px;
+  width: 300px;
+}
+.box-title{
+  margin-bottom: 20px;
+}
+.box-title .title{
+  font-size: 20px;
+}
+.box-title .btn-clear {
+  float: right;
+  vertical-align: top;
+}
